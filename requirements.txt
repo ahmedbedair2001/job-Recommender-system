@@ -1,0 +1,7 @@
+gunicorn
+pandas
+scipy
+sklearn
+flask
+flask_cors
+Recommender
