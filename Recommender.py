@@ -64,7 +64,7 @@ def results(job_name):
         transform_result = transform_data(combine_result,find_job)
 
         if job_name not in find_job['jobtitle'].unique():
-                return 'job not in Database'
+                return 'Job not found'
 
         else:
                 recommendations = recommend_movies(job_name, find_job, combine_result, transform_result)
