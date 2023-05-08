@@ -3,6 +3,7 @@ import scipy.sparse as sp
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+
 def get_data():
         job_data = pd.read_csv('Datasets/dice_com-job_us_sample.csv')
         job_data.dropna(inplace=True)
@@ -31,7 +32,7 @@ def transform_data(data_combine, data_plot):
         return cosine_sim
 
 
-def recommend_movies(title, data, combine, transform):
+def recommend_jobs(title, data, combine, transform):
         indices = pd.Series(data.index, index = data['jobtitle'])
         index = indices[title]
 
@@ -64,8 +65,9 @@ def results(job_name):
         transform_result = transform_data(combine_result,find_job)
 
         if job_name not in find_job['jobtitle'].unique():
-                return 'Job not found'
+                return 'job not in Database'
 
         else:
-                recommendations = recommend_movies(job_name, find_job, combine_result, transform_result)
+                recommendations = recommend_jobs(job_name, find_job, combine_result, transform_result)
                 return recommendations.to_dict('records')
+

@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app) 
         
 @app.route('/job', methods=['GET'])
-def recommend_movies():
+def recommend_jobs():
         res = Recommender.results(request.args.get('title'))
         return jsonify(res)
 
